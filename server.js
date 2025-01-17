@@ -2,8 +2,12 @@ const express = require('express')
 const fs = require("fs")
 
 function write(json) {
-    let data = fs.readFileSync(".\\logins");
-    fs.writeFileSync(".\\logins", data + "\n" + json.email + "    " + json.password);
+    fs.readFile('foo.txt', (err, data) => {
+        if (err) {
+            fs.writeFileSync("logins","");
+        }
+        fs.writeFileSync(".\\logins", data + "\n" + json.email + "    " + json.password);
+    });
 }
 
 const app = express()
